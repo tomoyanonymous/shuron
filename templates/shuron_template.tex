@@ -1,152 +1,52 @@
-% Template for NIME 2018
-%
-% Modified by Luke Dahl on 17 October 2-17
-% Modified by Cumhur Erkut on <2016-10-11 Tue>
-% Modified by Edgar Berdahl on 5 November 2014
-% Modified by Baptiste Caramiaux on 25 November 2013
-% Modified by Kyogu Lee on 7 October 2012
-% Modified by Georg Essl on 7 November 2011
-%
-% Based on "sig-alternate.tex" V1.9 April 2009
-% This file should be compiled with "nime-alternate.cls"
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+\documentclass[a4paper,report]{jsbook}
+%\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{hyperref}
+%\graphicspath{{tex}}
+\usepackage{longtable,booktabs}
+\interfootnotelinepenalty=10000
+\usepackage[truedimen,mag=1200,top=30truemm,bottom=20truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\DeclareRobustCommand\ddash{\hbox to 2zw{---\hss ---}}% \let\doubledash\ddash
 
-\documentclass{nime-alternate}
-%Pandoc citation
-\def\citep{\cite}
-\def\citetext{}
-\def\citealp{\cite}
-
-%Pandoc Tightlist
-\def\tightlist{\itemsep1pt\parskip0pt\parsep0pt}
-\begin{document}
-%
-% --- Author Metadata here ---
-%\conferenceinfo{NIME'17,}{May 15-19, 2017, Aalborg University Copenhagen, Denmark.}
-\conferenceinfo{NIME'18,}{June 3-6, 2018, Blacksburg, Virginia, USA.}
-
-\title{
-$en_title$: \\
-$en_subtitle$}
-
-%
-% You need the command \numberofauthors to handle the 'placement
-% and alignment' of the authors beneath the title.
-%
-% For aesthetic reasons, we recommend 'three authors at a time'
-% i.e. three 'name/affiliation blocks' be placed beneath the title.
-%
-% NOTE: You are NOT restricted in how many 'rows' of
-% "name/affiliations" may appear. We just ask that you restrict
-% the number of 'columns' to three.
-%
-% Because of the available 'opening page real-estate'
-% we ask you to refrain from putting more than six authors
-% (two rows with three columns) beneath the article title.
-% More than six makes the first-page appear very cluttered indeed.
-%
-% Use the \alignauthor commands to handle the names
-% and affiliations for an 'aesthetic maximum' of six authors.
-% Add names, affiliations, addresses for
-% the seventh etc. author(s) as the argument for the
-% \additionalauthors command.
-% These 'additional authors' will be output/set for you
-% without further effort on your part as the last section in
-% the body of your article BEFORE References or any Appendices.
-
-\numberofauthors{2} %  in this sample file, there are a *total*
-% of EIGHT authors. SIX appear on the 'first-page' (for formatting
-% reasons) and the remaining two appear in the \additionalauthors section.
-%
-
-% You can go ahead and credit any number of authors here,
-% e.g. one 'row of three' or two rows (consisting of one row of three
-% and a second row of one, two or three).
-%
-% The command \alignauthor (no curly braces needed) should
-% precede each author name, affiliation/snail-mail address and
-% e-mail address. Additionally, tag each line of
-% affiliation/address with \affaddr, and tag the
-% e-mail address with \email.
-%
-\author{
-$for(author)$
-\alignauthor
-$author.name$\\
-  \affaddr{$author.institution$}\\
-  \affaddr{$author.address1$}\\
-  \affaddr{$author.address2$}\\
-  \email{$author.mail$}
-$endfor$
+\DefineBibliographyStrings{english}{
+  andothers   = \mkbibemph{et al\adddot}           ,
+  chapter     = ch\adddot                          ,
+  editor      = Ed\adddot                          ,
+  editors     = Eds\adddot                         ,
+  mathesis    = Master's thesis                    ,
+  patentjp    = Japanese Patent                    ,
+  patentus    = U\adddot S\adddot\addspace Patent  ,
+  presentedat = presented at the\addspace          ,
+  techreport  = Tech\adddot\addspace Rep\adddot    ,
+  url         = [URL]: \addspace ,
+  urlseen     = {最終アクセス:\addspace},
 }
-% For your initial submission you MUST ANONYMIZE the authors.
+
+
+
+\title{\Large $title$\newline{\ddash}$subtitle${\ddash}}
+
+\author{$shozoku$\\$nyuugaku$\\$gakuseki$\\$author$}
+
+% for print
+\date{}
+
+\addbibresource{tex/citation.bib}
+
+\begin{document}
 
 \maketitle
-\begin{abstract}
-$abstract$
-\end{abstract}
 
-\keywords{$for(keywords)$$keywords.keyword$$sep$, $endfor$}
-
-% ------- CCS Concepts
-% Here is where you enter the CCS Concepts for your paper.
-%
-% It is strongly recommended that authors view the submission form prior to starting to write the paper, which includes information on the CCS Concepts.
-%
-%The 2012 ACM Computing Classification System (CCS) replaces the traditional 1998 version, which has served as the de facto standard classification system for the computing field. It is being integrated into the search capabilities and visual topic displays of the ACM Digital Library. Please enter the CCS XML code for the classification terms that describe your paper. To get the XML code, please use the following procedure, which is demonstrated using three NIME-related example terms: Applied computing~Sound and music computing, Applied computing~Performing arts, and Information systems~Music retrieval.
-%
-% 1) Browse to the website http://dl.acm.org/ccs_flat.cfm.
-% 2) Select one to three classification terms from the website that describe your paper (e.g. for the example paper Applied computing~Sound and music computing, Applied computing~Performing arts, and Information systems~Music retrieval.).
-% 3) For each classification you need to select the relevance (e.g. for this example, Sound and music computing is "high", Performing arts is "low", and Music retrieval is "Medium")
-% 4) Once you have selected the last term, click on "view CCS Tex Code". This will generate some code, which includes some CCSXML and some lines beginning with \ccsdesc.
-% 5) Keep all of this code, as you will need it for entering into the Precision Conference System paper submission form.
-% 6) For this document, keep only the \ccsdesc lines. Here is what you would paste for the classification example:
-% \begin{CCSXML}
-% <ccs2012>
-% <concept>
-% <concept_id>10010405.10010469.10010475</concept_id>
-% <concept_desc>Applied computing~Sound and music computing</concept_desc>
-% <concept_significance>500</concept_significance>
-% </concept>
-% <concept>
-% <concept_id>10010405.10010469.10010471</concept_id>
-% <concept_desc>Applied computing~Performing arts</concept_desc>
-% <concept_significance>300</concept_significance>
-% </concept>
-% <concept>
-% <concept_id>10010405.10010469.10010474</concept_id>
-% <concept_desc>Applied computing~Media arts</concept_desc>
-% <concept_significance>300</concept_significance>
-% </concept>
-% </ccs2012>
-% \end{CCSXML}
-
-\ccsdesc[500]{Applied computing~Sound and music computing}
-\ccsdesc[300]{Applied computing~Performing arts}
-\ccsdesc[100]{Human-centered computing~Human computer interaction}
-
-% this line creates the CCS Concepts section.
-\printccsdesc
+\tableofcontents
 
 $body$
 
-%
-% The following two commands are all you need in the
-% initial runs of your .tex file to
-% produce the bibliography for the citations in your paper.
-\bibliographystyle{abbrv}
-\bibliography{myreference}  % sigproc.bib is the name of the Bibliography in this case
-% You must have a proper ".bib" file
-%  and remember to run:
-% latex bibtex latex latex
-% to resolve all references
-%
-% ACM needs 'a single self-contained file'!
-%
-%APPENDICES are optional
 
-%%% Place this command where you want to balance the columns on the last page.
-%\balancecolumns
+\printbibliography[title = 参考文献]
 
-% That's all folks!
 \end{document}
