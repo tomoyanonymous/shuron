@@ -1,4 +1,4 @@
-PANDOCOPTION =markdown+hard_line_breaks+footnotes+pipe_tables+link_attributes+header_attributes+implicit_figures+yaml_metadata_block-auto_identifiers
+PANDOCOPTION =markdown+hard_line_breaks+footnotes+pipe_tables+link_attributes+header_attributes+implicit_figures+yaml_metadata_block-auto_identifiers --top-level-division=chapter --filter pandoc-fignos
 
 DATADIR := /Users/Tomoya/Kyudai/Shuron
 
@@ -37,7 +37,7 @@ image:img/*
 	ls img/*.{jpg,JPG,png} | xargs -I% convert % %.pdf
 
 md:md/document.md templates/*
-	pandoc md/document.md -f $(PANDOCOPTION) --to=latex --natbib --data-dir=$(DATADIR) --template=$(LATEX_TEMPLATE) | sed '/begin{figure}/{N;N;N;N;N;N;s/\n//g;}' | sed $(SEDOPTION) > tex/$(LATEX_FILE).tex
+	pandoc md/document.md -f $(PANDOCOPTION) --to=latex --biblatex --data-dir=$(DATADIR) --template=$(LATEX_TEMPLATE) | sed '/begin{figure}/{N;N;N;N;N;N;s/\n//g;}' | sed $(SEDOPTION) > tex/$(LATEX_FILE).tex
 
 docx:md/document.md
 	pandoc md/document.md -f $(PANDOCOPTION) --data-dir=$(DATADIR) --to=docx > docx/document.docx
