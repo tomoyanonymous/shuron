@@ -34,7 +34,7 @@ SEDOPTION+= -e 's/\begin{figure}/\begin{figure}[thbp]/g'
 all:latexmk
 
 image:img/*
-	ls img/*.{jpg,JPG,png} | xargs -I% convert % %.pdf
+	find img -name *.jpg -or -name *.png | xargs -IXXX sh -c 'F=XXX; convert $$F $${F%.*}.pdf'
 
 md:md/document.md templates/*
 	pandoc md/document.md -f $(PANDOCOPTION) --to=latex --biblatex --data-dir=$(DATADIR) --template=$(LATEX_TEMPLATE) | sed '/begin{figure}/{N;N;N;N;N;N;s/\n//g;}' | sed $(SEDOPTION) > tex/$(LATEX_FILE).tex
