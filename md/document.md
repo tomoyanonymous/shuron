@@ -114,7 +114,7 @@ Puckette ICMCキーノート[@puckette2015sampling]
 
 ### パリッカのゾンビ・メディアとサーキットベンディング
 
-![パリッカによるゾンビ・メディアの解説図。](../img/parikka_zombiemedia.png){width=70%}
+![パリッカによるゾンビ・メディアの解説図。](../img/parikka_zombiemedia.png){#fig:zombiemedia width=70%}
 
 ### ポール・デマリーニス
 
@@ -163,7 +163,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 
 
-![Whirlwindの信号処理を解説した図(Cookらの論文内の図を基に筆者が再作成)](../img/whirlwind_diagram_rewrite.png)
+![Whirlwindの信号処理を解説した図(Cookらの論文内の図を基に筆者が再作成)](../img/whirlwind_diagram_rewrite.png){#fig:whirlwind width=100%}
 
 図はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。 $+$  は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
 
