@@ -5,11 +5,11 @@ gakuseki: 2DS17026K
 author: 松浦 知也
 title: 音の記述と生成を再考するための装置と環境の制作
 subtitle:
+fignos-caption-name: 図
+fignos-plus-name: 図
 ---
 
 # 序論
-
-<この序論の長さを3案ぐらい持ってくる>
 
 本稿は、2017年から2018年にかけて行われた3つの音に関わる作品制作の実践の記録とその考察である。
 
@@ -165,7 +165,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 ![Whirlwindの信号処理を解説した図(Cookらの論文内の図を基に筆者が再作成)](../img/whirlwind_diagram_rewrite.png){#fig:whirlwind width=100%}
 
-図はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。 $+$  は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
+{+@fig:whirlwind}はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。 $+$  は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
 
 ## 関連研究
 
@@ -175,27 +175,36 @@ Ruratae Puckette
 
 ## 4回の展示の様子、それぞれの違い
 
-「Aphysical Unmodeling Instrument」は2017年10月から2018年6月の間に計4回展示を行った。
+本章では2017年10月から2018年6月の間に計4回展示を行った「Aphysical Unmodeling Instrument」の各展示での様子を時系列で説明する。
 
-1回目は奈良・町家の芸術祭はならぁと 2017のうち、10月27日から 11月5日にかけて開催された「はならぁと ぷらす」企画内、橿原エリア（八木札の辻ゾーン)公募作家として、八木札の辻交流館2階にて展示した。
-
-2回目は2017年12月15日、16日に昭和音楽大学にて開催されたインターカレッジ・ソニックアーツフェスティバル2017で、一般教室の中で展示した。
-
-3回目は2018年3月29日、30日に九州大学大橋キャンパス音響特殊棟で、筆者が所属する城研究室が主催したイベント「FREQ2018 21世紀初頭の音と音楽」の中で音響特殊棟無響室の中で展示した。
-
-4回目は、2018年6月3日から9日にかけてアメリカのVirginia Polytechnique Universityで開催された国際学会New Interfaces for Musical Expression 2018にて、Moss Arts Center2階ロビーにて展示した。
-
-
+1. 奈良・町家の芸術祭はならぁと 2017(2017年10月)
+2. インターカレッジ・ソニックアーツフェスティバル2017(2017年12月)
+3. FREQ2018  -21世紀初頭の音と音楽- (2018年3月)
+4. New Interfaces for Musical Expression 2018(2018年6月)
 
 ### 奈良・町家の芸術祭 はならぁと ぷらす2017
 
+![aui_hanarart](../img/aui_hanarart.jpg){#fig:aui_hanarart width=100%}
+
+奈良・町家の芸術祭はならぁと 2017のうち、10月27日から 11月5日にかけて開催された「はならぁと ぷらす」企画内、橿原エリア（八木札の辻ゾーン)公募作家として、八木札の辻交流館2階にて展示した。
+
 ### インターカレッジ・ソニックアーツフェスティバル2017
+
+![](../img/aui_icsaf.JPG){#fig:aui_icsaf width=100%}
+
+2017年12月15日、16日に昭和音楽大学にて開催されたインターカレッジ・ソニックアーツフェスティバル2017で、一般教室の中で展示した。
 
 ### FREQ2018 21世紀初頭の音と音楽
 
+![](../img/aui_freq.JPG){#fig:aui_freq width=100%}
+
+2018年3月29日、30日に九州大学大橋キャンパス音響特殊棟で、筆者が所属する城研究室が主催したイベント「FREQ2018 21世紀初頭の音と音楽」の中で音響特殊棟無響室の中で展示した。
+
 ### New Interfaces for Musical Expression 2018
 
+![](../img/aui_nime2018.jpg){#fig:aui_nime2018 width=100%}
 
+2018年6月3日から9日にかけてアメリカのVirginia Polytechnique Universityで開催された国際学会New Interfaces for Musical Expression 2018にて、Moss Arts Center2階ロビーにて展示した。
 
 ## 考察
 
@@ -253,13 +262,34 @@ David Tudor / Gordon Mumma
 
 - 12月　緑青ソフトウェアによる試作と演奏（Faust&Max）、インターフェースの限界
 
-- FREQ 1stプロトタイプ
 
-- AA-TPF 2nd（壊れた）、つまみによるコントロールの限界
+### FREQ2018 21世紀初頭の音と音楽 1stプロトタイプ
 
-- 回路、インターフェースの一新 3rd
+![FREQ2018 21世紀初頭の音と音楽での演奏の様子。](../img/exidiophone_freq.JPG){#fig:exidiophone_freq width=45%}
 
-- 基盤発注 4th
+### AA-TPF 2nd
+
+![レーザーカッターで切り出したアクリル板で作った筐体。](../img/exidiophone_ver2.jpg){#fig:exidiophone_ver2 width=50%}
+
+![Alternative Act Tech Performance Fes.での演奏の様子](../img/exidiophone_tpf.jpg){#fig:exidiophone_tpf width=50%}
+
+#### つまみによるコントロールの限界
+
+### 回路、インターフェースの一新 3rd
+
+![つまみでのコントロールを排したバージョンの写真。](../img/exidiophone_ver3.jpg){#fig:exidiophone_ver3 width=50%}
+
+![2018年8月 水道橋Ftarriでの演奏のセッティング。](../img/exidiophone_ftarri2.jpg){#fig:exidiophone_ftarri2 width=50%}
+
+![2018年8月蓮沼執太フルフィルコンサート"フルフォニー"での演奏の様子(撮影:後藤武浩)](../img/exidiophone_fullphil.jpg){#fig:exidiophone_fullphil width=50%}
+
+### 基板発注 4th
+
+![Autodesk Fusion360で新しい基板用のケースの3Dモデルを設計している時のスクリーンショット。](../img/exidiophone_model.png){#fig:exidiophone_model width=50%}
+
+![基板に部品を実装した状態の写真。](../img/exidiophone_pcb.jpg){#fig:exidiophone_pcb width=50%}
+
+![FREQ x HardcoreAmbienceのセッティングの写真。](../img/exidiophone_ver4.jpg){#fig:exidiophone_ver4 width=50%}
 
 ## 演奏からの考察
 この辺主観でしか語ることができないので迷う（自分のブログからさらに引用するとかか）
@@ -296,15 +326,64 @@ Exidiophoneは、空間も含めた体→サイバネティクスにおける、
 
 マスプロ的ものづくりとクラフト的ものづくり
 
-# (EDTAC) Electronic Delay Time Automatic Calculator
-- CW&T 1bit Slow Computer
+# EDTAC (Electronic Delay Time Automatic Calculator)
+
+本章では時間を計算する機能のみを持ったコンピュータ「Electronic Delay Time Automatic Calculator」（以下、EDTAC）の制作について考察する。
+
+EDTACは筆者が2018年9月から11月に掛けて滞在したSchool for Poetic Computationで制作されたもので、11月10日、11日に行われたSFPC Student Showcase Fall 2018 Classにて展示された。その後、前章で言及した2018年12月20日に九州大学大橋キャンパス音響特殊棟で開催されたイベント「FREQ × HardcoreAmbience」での演奏の中でも使用された。
+
+(本章の流れ、考察したいこと)
+
+## 関連作品・研究
+
+### 非同期コンピュータ・アーキテクチャ
+
+Manoharらはプロセッサ設計の複雑さ、電力消費の低減及び平均的なパフォーマンスの向上を目的とした非同期のコンピュータ・アーキテクチャを提案している[@Manohar2000]。
+
+### 実時間コンピューティング
+
+### 計算そのものに美学を見出す作品
+
+- CW&T 1bit Slow Computer https://cwandt.com/products/1-bit-1hz-cpu
 - ralf baecker Irrational Computing http://www.rlfbckr.org/work/irrational-computing/
 - Martin Howse Natural Logic
-- 高橋士郎 空気圧ロジック
+- 高橋士郎 空気圧ロジック http://www.shiro1000.jp/mpu/compo.htm
 
 ## システム概要
 
-## 物理量としてのプログラムソース
+![EDTACの展示の様子。](../img/edtac_filipwolak.jpg){#fig:edtac_filipwolak width=70%}
+
+本作品は電線及び光ファイバーで相互接続された3つのハードウェアで構成される。一つ目は電気パルスを受け取り、一定時間後に出力する遅延回路、二つ目は電気パルスを受け取りLEDを切り替えるカウンター回路、最後は電鍵音響器（テレグラフ・サウンダー）を電気リレーとして改造したものである。遅延回路及びカウンター回路は40cm四方ほどの木の板の上に針金を取り付け、電子部品を一つ一つはんだ付けしたものになっている。
+
+図![EDTACの各モジュールの接続図。](../img/edtac_structure.jpg){#fig:edtac1 width=100%}
+
+### 遅延回路
+
+図xは遅延回路部の回路図である。
+
+### カウンタ回路
+
+図xはカウンタ回路回路部の回路図である。
+
+### 電鍵音響器
+
+
+
+## 全体の動作の概要
+
+1. 遅延回路に電気パルスが入ってきて、一定時間後にパルスを再出力する。
+2. 出力されたパルスが電鍵音響器を鳴らす。
+3. 電鍵音響器とスイッチが働き、遅延回路とカウンタ回路の2つをトリガーする
+4. カウンタ回路は入力されると光るLEDを切り替える。今回の場合は10個のLEDを1つずつ切り替える。
+5. LEDは光ファイバーで、遅延回路のフォトトランジスタに繋がれていて、紙と黒鉛でできた抵抗に流れる電流を切り替える。
+6. 光ファイバーが有効にした抵抗値が遅延回路の遅延時間を変化させる。
+7. 1に戻る。
+
+## 議論
+
+光ファイバーでつなぐLEDとフォトトランジスタの組み合わせを変えることで、得られる時間の順番が変わる。
+
+カウンタ回路のアルゴリズムを変えることでより複雑なシーケンスを得ることができる（発展形）。
 
 「音の記述とはなんなのか」のまえに「時間の記述とはそもそもなんなのか」という疑問
 
