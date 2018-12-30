@@ -39,11 +39,14 @@ image:img/*
 md:md/document.md templates/*
 	pandoc md/document.md -f $(PANDOCOPTION) --to=latex --biblatex --data-dir=$(DATADIR) --template=$(LATEX_TEMPLATE) | sed '/begin{figure}/{N;N;N;N;N;N;s/\n//g;}' | sed $(SEDOPTION) > tex/$(LATEX_FILE).tex
 
+appendix:md/appendix*
+	find md -name appendix* |xargs -IXXX sh -c 'F=XXX;FILENAME=$${F##*/} ;pandoc XXX -o tex/$${FILENAME%.*}.tex'
+
 docx:md/document.md
 	pandoc md/document.md -f $(PANDOCOPTION) --data-dir=$(DATADIR) --to=docx > docx/document.docx
 
-latexmk:md tex/myreference.bib
-	latexmk -f -silent -cd tex/$(LATEX_FILE).tex
+latexmk:md tex/myreference.bib appendix
+	latexmk -f  -cd tex/$(LATEX_FILE).tex
 
 debug:md
 		latexmk -f --shell-escape -cd tex/$(LATEX_FILE).tex

@@ -7,6 +7,11 @@ title: 音の記述と生成を再考するための装置と環境の制作
 subtitle:
 fignos-caption-name: 図
 fignos-plus-name: 図
+abstract: ここに全体の概要が入ります。
+appendix:
+ - file: appendixA
+   title: Exidiophoneの回路図
+
 ---
 
 # 序論
@@ -188,6 +193,8 @@ Ruratae Puckette
 
 奈良・町家の芸術祭はならぁと 2017のうち、10月27日から 11月5日にかけて開催された「はならぁと ぷらす」企画内、橿原エリア（八木札の辻ゾーン)公募作家として、八木札の辻交流館2階にて展示した。
 
+
+
 ### インターカレッジ・ソニックアーツフェスティバル2017
 
 ![](../img/aui_icsaf.JPG){#fig:aui_icsaf width=100%}
@@ -200,11 +207,19 @@ Ruratae Puckette
 
 2018年3月29日、30日に九州大学大橋キャンパス音響特殊棟で、筆者が所属する城研究室が主催したイベント「FREQ2018 21世紀初頭の音と音楽」の中で音響特殊棟無響室の中で展示した。
 
+今までで一番管楽器っぽい音にはなった
+
+すずえりさんの感想：全然管楽器っぽくない
+
+
+
 ### New Interfaces for Musical Expression 2018
 
 ![](../img/aui_nime2018.jpg){#fig:aui_nime2018 width=100%}
 
 2018年6月3日から9日にかけてアメリカのVirginia Polytechnique Universityで開催された国際学会New Interfaces for Musical Expression 2018にて、Moss Arts Center2階ロビーにて展示した。
+
+
 
 ## 考察
 
@@ -246,9 +261,26 @@ Exidiophoneは、オーディオフィードバック(ハウリング)を音の�
 
 ### 詳細な構造
 
+![Exidiophoneの音のなる構造を説明する図。](../img/exidiophone-system-ja.jpg){#fig:exidiophone-sys width=100%}
+
+Exidiophoneの基本的な動作原理を{+@fig:exidiophone-sys}に示した。
+
+通常のオーディオフィードバックは、増幅器の限界まで際限なく増幅し続ける。一方、Exidiophoneは音量を光の強さで制御する光センサと、対向して設置されている、通常点灯しているがマイクロフォンからの信号の音量が一定を超えると消灯するLEDが設置されており、
+
+1. フィードバックの音量が大きくなる
+2. LEDが消える
+3. 光センサーが音量を小さくする
+4. フィードバックが止まる
+5. LEDが再点灯する
+6. 1に戻る
+
+といった流れで、光の明滅と共にフィードバック音が自律的に鳴る鳴らないを繰り返す。この点滅速度は、楽器についているソケット挿し込むコンデンサの容量が大きくなるほど遅くすることができる。
+
 
 
 ## Crackleboxからのインスパイア
+
+関連する作品としてMichel Waisviszの開発した電子楽器Crackleboxがある。[@Waisvisz2004]
 
 ## その他先行作品
 
@@ -262,10 +294,11 @@ David Tudor / Gordon Mumma
 
 - 12月　緑青ソフトウェアによる試作と演奏（Faust&Max）、インターフェースの限界
 
-
 ### FREQ2018 21世紀初頭の音と音楽 1stプロトタイプ
 
-![FREQ2018 21世紀初頭の音と音楽での演奏の様子。](../img/exidiophone_freq.JPG){#fig:exidiophone_freq width=45%}
+![FREQ2018 21世紀初頭の音と音楽での演奏の様子。](../img/exidiophone_freq.JPG){#fig:exidiophone_freq width=70%}
+
+2018年1月頃から回路設計、プロトタイプを始め、2018年3月に九州大学大橋キャンパス音響特殊棟で行われたイベントFREQ2018 -21世紀初頭の音と音楽- で最初のパフォーマンスを行った。3Dプリンター(Formlab form2)で出力した筐体に基板を
 
 ### AA-TPF 2nd
 

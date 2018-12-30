@@ -1,6 +1,6 @@
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\documentclass[a4paper,report]{jsbook}
+\documentclass[a4paper,11pt]{jsreport}
 %\usepackage{amsmath,amssymb}
 \usepackage{bm}
 \usepackage[dvipdfmx]{graphicx}
@@ -52,11 +52,23 @@
 
 \maketitle
 
+\begin{abstract}
+$abstract$
+\end{abstract}
+
 \tableofcontents
 
 $body$
 
 
 \printbibliography[title = 参考文献]
+
+
+\appendix
+
+$for(appendix)$
+\chapter{$appendix.title$}
+\include{$appendix.file$}
+$endfor$
 
 \end{document}
