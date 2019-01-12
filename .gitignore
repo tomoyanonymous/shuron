@@ -5,3 +5,4 @@ tex/document*
 *.log
 *.bbl
 *.blg
+img/**/*.pdf
