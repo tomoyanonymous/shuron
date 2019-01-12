@@ -168,11 +168,85 @@ Edison Effect
 
 物理モデルという、音を出すプロセスを記述したものを楽譜のように捉え、それを再生する装置を作るという、演奏として展示をすることを試みた。
 
-以下に本章の構成を示す。まず、Whirlwindというメタ管楽器モデルの概要について説明し、それが音と記述の生成という観点においてどう重要かについての視点を述べる。その後、本作と関連する作品を挙げる。
+本章ではまず、本作品の背景となる技術、物理モデリング合成の歴史と手法を概観した上で、本作で直接参照したCookによるメタ管楽器モデルWhirlwindについて説明し、それが音と記述の生成という観点においてどう重要かについての視点を述べる。その上で本作「Aphysical Unmodeling Instrument」が具体的に何を行う作品なのか解説する。
+
+その後、本作と関連する作品、研究を挙げる。
+
+その上で本作「Aphysical Unmodeling Instrument」の4回の展示の実装と、各展示における部分ごとの変遷をみる。最終的に、4回の展示を通して得られたことについて議論し、まとめる。
 
 
 
-## Whirlwindについて
+## 作品概要
+
+### 物理モデリング合成
+
+物理モデリング合成とは実際の楽器の発音機構を計算で模倣する手法である。
+
+![Bilbaoによる物理モデリング合成の手法の歴史の図。手法は太線、物理モデリング以外の音響合成を元にしているものは灰色の線、関連は灰色点線で表す。提案者の名前が線の下に記される。発案年はいくつかのものは出版年などの裏付けがなく推定も含まれる。](../img/physicalmodeling-history.png){#fig:physicalmodel-history width=100%}
+
+{+@fig:physicalmodel-history}はBilbaoによる物理モデリング合成の手法の歴史を概観したものである[@Bilbao2009]。
+
+Bilbaoによれば、1960年代にRissetが様々な音高の純音の組み合わせで音を表現する加算合成を考案したのに始まり、現代のシンセサイザーの基礎となる減算合成、
+
+またSmithは録音された実際の楽器の音を鍵盤や専用のインターフェースを介して発音するサンプリング合成、いわゆるサンプラーのようなものも現実の楽器を模倣する一つの手法として数えている[@smith2010pasp]。
+
+もっとも基礎的な手法は、力学モデルを微分方程式として作り、その解を求め、離散化して計算機に実装するものである。例えばバネの片方の端におもりが付いていて、片方が壁に固定されているときバネを引っ張ると質点は一定の間隔で揺れる。これを
+$$
+m \frac{d^2x(t)}{dt^2} = -kx(t)
+$$
+$$
+(ただしmはバネの先の質点の重さ、kはばね定数、x(t)は時間tにおけるバネの自然長からの伸び縮み)
+$$
+
+
+
+とモデル化すれば、この微分方程式は
+$$
+x(t) = Asin(\sqrt{\frac{k}{m}}t+\alpha)
+$$
+$$
+(A,\alpha はx(0)および\frac{dx(0)}{dt}、すなわち初期位置と初期速度によって決定される。)
+$$
+
+
+
+というように解くことができる。コンピューターの中で扱う場合はこれを
+$$
+x[n] = Asin(\sqrt{\frac{k}{m}}\frac{n}{f_s}+\alpha)
+$$
+$$
+(f_sはサンプリング周波数:時間を1秒間に何回分割するかを表す)
+$$
+
+という数列とすれば表現できる。
+
+この数式の中ではバネそのものの重さが0ということになっているし、質点は重さはあるが全く回転しない、理想的には体積が全く無い前提になっている。現実のバネは引っ張りすぎれば伸び切ってしまうので無限に伸ばせるわけではないし、ミクロ的に見ていけば現実のバネはkが完全に一定にはならない。なにより現実には空気抵抗やバネの中で伸び縮みのエネルギーが熱として消えていくので、振動はだんだんと減衰していき、いつかは止まる。しかし上述の計算モデルは無限に振動を続けることになる。つまり、正確ではないと言える。しかし、振動をはじめてから3秒後までの様子を計算で再現したくて、現実のバネも3秒後に振幅が最初の0.999倍程度までしか減衰していないとすれば、この数式はある程度バネのふるまいを表していて、有益に使うことができる。そのうえで、例えば弦をごく小さなバネが連結されたものと見立てる≒モデル化する事で弦の振動を新たに計算モデル化出来るので、これも有益だと言える。
+
+式は立てられても直接は解けないものはある FDA
+
+FDAは何にでも使えるけど計算コストが大きい
+
+ウェーブガイド合成
+
+### リアルでない物理モデリング合成
+
+例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらはその手法について記した本を以下のように締めくくっている[@Trautman2003]。
+
+> In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.
+
+
+
+#### 擬似物理モデリング(Borin et al.)
+
+> Starting from these considerations, it becomes extremely interesting to expetiment with structures that are not anchored in physical reality and whose only constraints are stability and passibity. These models take physical reality only as a source of inspiration but cannot be strictly considered as physical. For all of these reasons, pseudophysical models represent a field of sound synthesis that has yet to be explored.
+
+Borinらは1992年に未だ存在しない音を作るための手法として物理的な再現性を一つの出発点として捉え、全てを厳密に再現はしないという方法を疑似物理モデリングという名前で議論している[@Borin1992]。
+
+#### YAMAHA VL1
+
+The user manual of YAMAHA VL1, the first commercial physical modeling synthesizer, described,  "One of the remarkable features of the VL1’s Virtual Acoustic Synthesis system is that just about any driver can be used with any type of pipe or string." [@yamahamanual].
+
+### Cookによるメタ管楽器モデルWhirlwind
 
 Whirlwindはウェーブガイド合成でモデリングされたトランペット、フルート、クラリネットの計算モデルを和集合的に合体させたものである[@cook1992meta]。元々の3つのモデルはすべてウェーブガイド合成という手法をベースにしていて、フィルタ、遅延を含むフィードバックという点で共通している。HIRNという専用のコントローラとともに使うことで、金管楽器と木管楽器の音色をモーフィングしたような演奏が出来るとされている。
 
@@ -182,15 +256,17 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 {+@fig:whirlwind}はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。 $+$  は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
 
-## 関連研究
+### Aphysical Unmodeling Instrument 作品概要
 
-YAMAHA　VL1 non-real applications
+## 関連事例
 
-Venova
+### YAMAHA Venova
 
-Ruratae Puckette
+### aFrame
 
-## 4回の展示の様子、それぞれの違い
+### Ruratae
+
+## 展示内容とその変遷
 
 本章では2017年10月から2018年6月の間に計4回展示を行った「Aphysical Unmodeling Instrument」の各展示での様子を時系列で説明する。
 
@@ -236,6 +312,10 @@ Ruratae Puckette
 ## 考察
 
 Whirlwindは3つの現実の楽器を仮想的に合体させているので、現実には存在し得ない。それゆえに、このモデルを再物理化するときにモデルの説明されていない部分を何かしらの形で解釈して現実化する必要がある。その解釈の過程によって、それぞれの展示環境において異なる実装がなされる(??)
+
+
+
+聴取に基づく音の記述方法と、**生成に基づく音の記述方法**
 
 
 
@@ -347,7 +427,7 @@ No-input Mixing Boardは日本の即興演奏家中村としまるがはじめ�
 
 ### David Tudor Rainforest / Microphone
 
-## 制作過程
+## 演奏と楽器の変遷
 
 ### 6月　ノーインプットミキサー＋マイク
 
@@ -511,7 +591,7 @@ LEDは10mm径の超高輝度白色LEDを利用し、ケースの穴に90°折り
 
 ![FREQ x HardcoreAmbienceのセッティングの写真。](../img/exidiophone_ver4.jpg){#fig:exidiophone_ver4 width=50%}
 
-## 演奏からの考察
+## 考察
 この辺主観でしか語ることができないので迷う（自分のブログからさらに引用するとかか）
 特に蓮沼フィルのは入れたい
 演奏の記録リストは付録とかでいいかな
@@ -544,7 +624,7 @@ Ralf baecker
 
 
 
-## この楽器における記述と生成
+## まとめ
 
 ノーインプットミキサーは、ある意味で電子回路の即興設計(BBBとかと近い)だから、ある意味回路図の変化で記述できる
 
