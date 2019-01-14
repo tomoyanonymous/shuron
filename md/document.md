@@ -34,7 +34,7 @@ appendix:
 
 音楽を行為として考える→ミュージッキング、参加する音楽など、もしくは人間同士の関係性として捉えることができる。
 
-脳に直接電気信号をぶち込む音楽がでてこない限りは、音は振動という物理現象であることはまだ大きな要素であるはずなのに、行為論に還元してしまうとそういった議論が全部なくなってしまう
+ただそれはそれで脳に直接電気信号をぶち込む音楽がでてこない限りは、音は振動という物理現象であることはまだ大きな要素であるはずなのに、行為論に還元してしまうとそういった議論が全部なくなってしまう
 
 人-人の関係性もいいんだけど人-物(楽器とか、音を出すものとか)の関係性にもっと着目しないとダメでは
 
@@ -242,21 +242,37 @@ FDAは何にでも使えるけど計算コストが大きい
 
 ### リアルでない物理モデリング合成
 
-例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらはその手法について記した本を以下のように締めくくっている[@Trautman2003]。
+楽器の物理モデリング合成のいちばんの目的はコンピューター上で本物の楽器にできるだけ近い音を出すことだが、その応用として現実ではありえない楽器音を作るという、一見すると真逆の取り組みが数多く行われている。
+
+例えば商用のシンセサイザーとしてはじめて物理モデリング音源を採用したYAMAHA VL1のユーザーマニュアルにはこの様な文言が見られる[@yamahamanual]。
+
+> VA音源は、物理モデルによる音の合成という今までになかった音源方式をとっています。これはいわば、音源内に仮想的に作りあげたアコースティック楽器を使って音づくりをしているわけです。ですからその音は、息使いや音の存在感、そして音と音のつながりの自然さなどの面で、AWM2音源よりもリアルです。(10p)
+
+> VA音源では、まずインストゥルメントという部分で物理モデルの管の長さやリードの形などを自由に変形することによって、現実には作ることも演奏することも不可能な新しいアコースティック楽器を創造することが可能です。(7p)
+
+リアルさを強調する一方で現実には作れない音が出せることも新規性として挙げていることがわかる。また1996年のコンピューター・ミュージック・マガジンの物理モデリング音源を特集した号では
+
+> DTM用の音源に限らず、現在あるほとんどのシンセサイザがPCM方式となっています。
+>
+> 音源は音質的にも非常にクリアで,かつリアルなサウンドを作り出してくれますが,このPCMにも限界があります。
+>
+> 一言でいえば表情の乏しさとでもいうのでしょうか。
+>
+> これを,シミュレーションというまったく違うアプローチで解決してくれるのが物理音源なのです。(2p)
+
+> しかし,ここでもうお気付きの方もいらっしゃるかもしれませんが,このような組み合わせによるシミュレーションですので,世の中には存在しない,マウスピースと弦といった組み合わせも可能になってきます。ちょっと妙ではありますが,電子音ではない,アコースティックな音が作れるというのが,この物理音源の魅力でもあるのです。(3p~4p)
+
+と、リアルさとありえない楽器という一見対立する2つをどちらも魅力として語っていることから、開発側だけでなくユーザー側もこうした宣伝文句をある程度受け入れていた事が伺える[@cmmagazine1996]。
+
+より近年の議論では、例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらは、2018年現在もまだ製品などに応用されていないその手法について解説した本を以下のように締めくくる[@Trautman2003]。
 
 > In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.
 
+この様なリアルを目指しつつ非リアルも求める傾向を説明する言葉として、VL1の登場する1年前の1992年にBorinらが用いた疑似物理モデリングという考え方がある。物理的リアルさは発想の源でしか無く[@Borin1992]。
 
-
-#### 擬似物理モデリング(Borin et al.)
+> From our point of view, synthesis by physical models--being a sort of a musical reality "generator" on its own--makes it possible to take inspiration from the real world in order to derive our iterpretation of it without forcing us to limit experimentation to the usual physical equations.
 
 > Starting from these considerations, it becomes extremely interesting to expetiment with structures that are not anchored in physical reality and whose only constraints are stability and passibity. These models take physical reality only as a source of inspiration but cannot be strictly considered as physical. For all of these reasons, pseudophysical models represent a field of sound synthesis that has yet to be explored.
-
-Borinらは1992年に未だ存在しない音を作るための手法として物理的な再現性を一つの出発点として捉え、全てを厳密に再現はしないという方法を疑似物理モデリングという名前で議論している[@Borin1992]。
-
-#### YAMAHA VL1
-
-The user manual of YAMAHA VL1, the first commercial physical modeling synthesizer, described,  "One of the remarkable features of the VL1’s Virtual Acoustic Synthesis system is that just about any driver can be used with any type of pipe or string." [@yamahamanual].
 
 ### Cookによるメタ管楽器モデルWhirlwind
 
@@ -270,13 +286,31 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 ### Aphysical Unmodeling Instrument 作品概要
 
+Aphysical Unmodeling InstrumentはWhirlwindをコンピューターではなく物理的なオブジェクトの組み合わせで実装するサウンドインスタレーションである。計算モデルをコンピュータの世界の外側で実装することを目的として、デジタル信号処理
+
+本作品ではMIDIやデジタル制御の信号を使わず、モデルの各部分を物理的なオブジェクトで置き換え、そのコントロールは
+
+例えば{+@fig:whirlwind}でDelayと書かれた遅延処理はスピーカーとマイクの組み合わせで、音速と距離に応じた音波の遅れで置き換えている。
+
 ## 関連事例
+
+### 三輪眞弘 逆シミュレーション音楽
+
+コンピューターのアルゴリズムをコンピューター以外で実行するという視点での類似した作品として、三輪眞弘の逆シミュレーション音楽が挙げられる。逆シミュレーション音楽は三輪によれば
+
+> 逆シミュレーション音楽は地球上の古代人や未開民族が行っていたかもしれない、 あるいは行うことが可能であったような音楽（これを「ありえたかもしれない音楽」と呼ぶ）を空想し、 主にコンピュータ・シミュレーションによって検証しながら新しい音楽を生み出す試みである。 その際、演奏会や作曲家、演奏家、聴衆の区別など、音楽に関係する既存の社会的制度は前提としない。
+
+とあり、音楽を作り出すための計算のアルゴリズムを決める「規則による生成」、演奏の際に現実どう行動するか、どのような道具を用いるかを検討する「解釈」、作品のタイトルや作品に使われる道具に名前を付けその由来を考える(現実には存在しない物語でも良い)「命名」という3種の行動（三輪はこれを「相」と名付ける）を元に作品を作る。実際の逆シミュレーション音楽作品には架空の物語が付随しており、三輪は全ての物語の最後を「という夢をみた。」という一文で締めている。
+
+### CORDIS-ANIMA, GENESIS
+
+### Ruratae
 
 ### YAMAHA Venova
 
 ### aFrame
 
-### Ruratae
+### 
 
 ## 展示内容とその変遷
 
@@ -291,7 +325,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 ![aui_hanarart](../img/aui_hanarart.jpg){#fig:aui_hanarart width=100%}
 
-奈良・町家の芸術祭はならぁと 2017のうち、10月27日から 11月5日にかけて開催された「はならぁと ぷらす」企画内、橿原エリア（八木札の辻ゾーン)公募作家として、八木札の辻交流館2階にて展示した。
+奈良・町家の芸術祭はならぁと 2017のうち、10月27日から 11月5日にかけて開催された「はならぁと ぷらす」企画内、橿原エリア（八木札の辻ゾーン)公募作家として、八木札の辻交流館2階にて展示した[@hanarart2017] 。
 
 
 
@@ -299,7 +333,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 ![](../img/aui_icsaf.JPG){#fig:aui_icsaf width=100%}
 
-2017年12月15日、16日に昭和音楽大学にて開催されたインターカレッジ・ソニックアーツフェスティバル2017で、一般教室の中で展示した。
+2017年12月15日、16日に昭和音楽大学にて開催されたインターカレッジ・ソニックアーツフェスティバル2017で、一般教室の中で展示した[@icsaf2017]。
 
 ### FREQ2018 21世紀初頭の音と音楽
 
@@ -328,6 +362,16 @@ Whirlwindは3つの現実の楽器を仮想的に合体させているので、�
 
 
 聴取に基づく音の記述方法と、**生成に基づく音の記述方法**
+
+
+
+### 概念的サーキットベンディング
+
+（グリッチとかとは別種のものとして）
+
+VL1とか、コンポ―ネントとして成立しているものは無理やり組み合わせることが可能になってしまうという点
+
+そして、物理モデリングは新しいけどハイプ・サイクルを通り過ぎたobsoleteなテクノロジーではあると思う
 
 
 
