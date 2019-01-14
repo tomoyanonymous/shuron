@@ -244,35 +244,39 @@ FDAは何にでも使えるけど計算コストが大きい
 
 楽器の物理モデリング合成のいちばんの目的はコンピューター上で本物の楽器にできるだけ近い音を出すことだが、その応用として現実ではありえない楽器音を作るという、一見すると真逆の取り組みが数多く行われている。
 
-例えば商用のシンセサイザーとしてはじめて物理モデリング音源を採用したYAMAHA VL1のユーザーマニュアルにはこの様な文言が見られる[@yamahamanual]。
+例えば商用のシンセサイザーとしてはじめて物理モデリング音源を採用したYAMAHA VL1のユーザーマニュアルにはこの様な文言が見られる[@vl1perfectguide1993]。
 
-> VA音源は、物理モデルによる音の合成という今までになかった音源方式をとっています。これはいわば、音源内に仮想的に作りあげたアコースティック楽器を使って音づくりをしているわけです。ですからその音は、息使いや音の存在感、そして音と音のつながりの自然さなどの面で、AWM2音源よりもリアルです。(10p)
+> *VA音源は、物理モデルによる音の合成という今までになかった音源方式をとっています。これはいわば、音源内に仮想的に作りあげたアコースティック楽器を使って音づくりをしているわけです。ですからその音は、息使いや音の存在感、そして音と音のつながりの自然さなどの面で、AWM2音源よりもリアルです。(10p)*
 
-> VA音源では、まずインストゥルメントという部分で物理モデルの管の長さやリードの形などを自由に変形することによって、現実には作ることも演奏することも不可能な新しいアコースティック楽器を創造することが可能です。(7p)
+> *VA音源では、まずインストゥルメントという部分で物理モデルの管の長さやリードの形などを自由に変形することによって、現実には作ることも演奏することも不可能な新しいアコースティック楽器を創造することが可能です。(7p)*
 
 リアルさを強調する一方で現実には作れない音が出せることも新規性として挙げていることがわかる。また1996年のコンピューター・ミュージック・マガジンの物理モデリング音源を特集した号では
 
-> DTM用の音源に限らず、現在あるほとんどのシンセサイザがPCM方式となっています。
+> *DTM用の音源に限らず、現在あるほとんどのシンセサイザがPCM方式となっています。*
 >
-> 音源は音質的にも非常にクリアで,かつリアルなサウンドを作り出してくれますが,このPCMにも限界があります。
+> *音源は音質的にも非常にクリアで,かつリアルなサウンドを作り出してくれますが,このPCMにも限界があります。*
 >
-> 一言でいえば表情の乏しさとでもいうのでしょうか。
+> *一言でいえば表情の乏しさとでもいうのでしょうか。*
 >
-> これを,シミュレーションというまったく違うアプローチで解決してくれるのが物理音源なのです。(2p)
+> *これを,シミュレーションというまったく違うアプローチで解決してくれるのが物理音源なのです。(2p)*
 
-> しかし,ここでもうお気付きの方もいらっしゃるかもしれませんが,このような組み合わせによるシミュレーションですので,世の中には存在しない,マウスピースと弦といった組み合わせも可能になってきます。ちょっと妙ではありますが,電子音ではない,アコースティックな音が作れるというのが,この物理音源の魅力でもあるのです。(3p~4p)
+> *しかし,ここでもうお気付きの方もいらっしゃるかもしれませんが,このような組み合わせによるシミュレーションですので,世の中には存在しない,マウスピースと弦といった組み合わせも可能になってきます。ちょっと妙ではありますが,電子音ではない,アコースティックな音が作れるというのが,この物理音源の魅力でもあるのです。(3p~4p)*
 
 と、リアルさとありえない楽器という一見対立する2つをどちらも魅力として語っていることから、開発側だけでなくユーザー側もこうした宣伝文句をある程度受け入れていた事が伺える[@cmmagazine1996]。
 
 より近年の議論では、例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらは、2018年現在もまだ製品などに応用されていないその手法について解説した本を以下のように締めくくる[@Trautman2003]。
 
-> In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.
+> *In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.*
 
 この様なリアルを目指しつつ非リアルも求める傾向を説明する言葉として、VL1の登場する1年前の1992年にBorinらが用いた疑似物理モデリングという考え方がある。物理的リアルさは発想の源でしか無く[@Borin1992]。
 
-> From our point of view, synthesis by physical models--being a sort of a musical reality "generator" on its own--makes it possible to take inspiration from the real world in order to derive our iterpretation of it without forcing us to limit experimentation to the usual physical equations.
+> *From our point of view, synthesis by physical models--being a sort of a musical reality "generator" on its own--makes it possible to take inspiration from the real world in order to derive our iterpretation of it without forcing us to limit experimentation to the usual physical equations.*
 
-> Starting from these considerations, it becomes extremely interesting to expetiment with structures that are not anchored in physical reality and whose only constraints are stability and passibity. These models take physical reality only as a source of inspiration but cannot be strictly considered as physical. For all of these reasons, pseudophysical models represent a field of sound synthesis that has yet to be explored.
+> *Starting from these considerations, it becomes extremely interesting to expetiment with structures that are not anchored in physical reality and whose only constraints are stability and passibity. These models take physical reality only as a source of inspiration but cannot be strictly considered as physical. For all of these reasons, pseudophysical models represent a field of sound synthesis that has yet to be explored.*
+
+Kojsらはこうした物理モデリング合成の展開をコンピューターを用いた音楽作品に応用されてきた例を**拡張(Extended)・融合(Hybrid)・抽象(Abstract)**という3種類に分類し整理している({+@fig:kojs-table})[@Kojs2007]。
+
+![Kojsらによる物理モデリング合成の応用を分類する表。](../img/kojs-table.png){#fig:kojs-table width=65%}
 
 ### Cookによるメタ管楽器モデルWhirlwind
 
@@ -282,7 +286,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 ![Whirlwindの信号処理を解説した図(Cookらの論文内の図を基に筆者が再作成)](../img/whirlwind_diagram_rewrite.png){#fig:whirlwind width=100%}
 
-{+@fig:whirlwind}はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。 $+$  は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
+{+@fig:whirlwind}はWhirlwindの処理を図解したものである。図の左側、コントローラに入力された息は、その強さ(Envelope)と、息の強さに応じて変化する雑音(Noise)として扱われる。それ以外の部分は、仮想的な管楽器の中で音波が伝達、反射される様子をフィードバックループとしてモデル化している。Delay1とDelay2は管の長さと木管楽器のトーンホールの位置に応じて変化する遅延を表す。Delay3はフルートにおける唄口から左側の頭部管端での反射を表す。$+$ は音波の加算を表す。Nonlinearityは唇やリードの振動で生じる歪を多項式 $ax^3+bx^2+cx$ と単純化して表現している。Resonator(Lip)は演奏者の唇が単一の固有振動数を持つ共鳴器として、双二次フィルタでモデル化したものだ。Delay1,2の手前の1pole Filterは管の端で音波が反射するときに高周波数成分が減衰するのをモデル化したものだ。(Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
 
 ### Aphysical Unmodeling Instrument 作品概要
 
@@ -296,11 +300,11 @@ Aphysical Unmodeling InstrumentはWhirlwindをコンピューターではなく�
 
 ### 三輪眞弘 逆シミュレーション音楽
 
-コンピューターのアルゴリズムをコンピューター以外で実行するという視点での類似した作品として、三輪眞弘の逆シミュレーション音楽が挙げられる。逆シミュレーション音楽は三輪によれば
+コンピューターのアルゴリズムをコンピューター以外で実行する、という視点での類似した作品として、三輪眞弘の逆シミュレーション音楽が挙げられる。逆シミュレーション音楽は三輪によれば
 
 > 逆シミュレーション音楽は地球上の古代人や未開民族が行っていたかもしれない、 あるいは行うことが可能であったような音楽（これを「ありえたかもしれない音楽」と呼ぶ）を空想し、 主にコンピュータ・シミュレーションによって検証しながら新しい音楽を生み出す試みである。 その際、演奏会や作曲家、演奏家、聴衆の区別など、音楽に関係する既存の社会的制度は前提としない。
 
-とあり、音楽を作り出すための計算のアルゴリズムを決める「規則による生成」、演奏の際に現実どう行動するか、どのような道具を用いるかを検討する「解釈」、作品のタイトルや作品に使われる道具に名前を付けその由来を考える(現実には存在しない物語でも良い)「命名」という3種の行動（三輪はこれを「相」と名付ける）を元に作品を作る。実際の逆シミュレーション音楽作品には架空の物語が付随しており、三輪は全ての物語の最後を「という夢をみた。」という一文で締めている。
+とあり、音楽を作り出すための計算のアルゴリズムを決める「規則による生成」、演奏の際に現実どう行動するか、どのような道具を用いるかを検討する「解釈」、作品のタイトルや作品に使われる道具に名前を付けその由来を考える(現実には存在しない物語でも良い)「命名」という3種の行動（三輪はこれを「相」と名付ける）を元に作品を作る[@Miwa2003]。実際の逆シミュレーション音楽作品には架空の物語が付随しており、三輪は全ての物語の最後を「という夢をみた。」という一文で締めている。
 
 ### CORDIS-ANIMA, GENESIS
 
