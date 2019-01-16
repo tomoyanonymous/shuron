@@ -7,7 +7,7 @@ title: 音の記述と生成を再考するための装置と環境の制作
 subtitle:
 fignos-caption-name: 図
 fignos-plus-name: 図
-abstract: ここに全体の概要が入ります。
+abstract: 本研究は
 appendix:
  - file: appendixA
    title: Exidiophoneの回路図
@@ -15,6 +15,18 @@ appendix:
 ---
 
 
+
+# 概要 {.unnumbered}
+
+本研究では、記録と再生に関わる音楽的な領域、例えば作曲と演奏の関係について、音を発する装置の制作を通じて再考することを試みた。具体的なアプローチとして、1.物理モデリング合成という、実際の楽器をコンピューターで再現する手法を電子回路や共鳴器のような音響的要素で物理的に再実装、具現化するサウンドインスタレーション「Aphysical Unmodeling Instrument」の制作、展示 2.オーディオフィードバックを発音原理とする、演奏に空間的要素が入り、既存の楽譜で記述不可能、またコンピューター上での再現が不可能な電子音響楽器「Exidiophone」の開発とそれを用いた演奏活動 3.音楽、更には時間の記述を再考するためのフィードバック構造を持つ、時間を分割する機能のみを持った電子計算機としての回路彫刻作品「Electronic Delay Time Automatic Calculator」の制作、展示を行った。以上3作品それぞれを音楽に関わるテクノロジーの発展の歴史と、サウンドアートや実験音楽における音楽の概念の更新を試みてきた芸術家の取り組み双方の視点から検討し、その考察を行った。
+
+# Abstract {.unnumbered}
+
+This part is an abstract in english
+
+# 謝辞 {.unnumbered}
+
+みなさま有難うございました。
 
 # 序論
 
