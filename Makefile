@@ -31,10 +31,17 @@ SEDOPTION+= -e 's/\begin{figure}/\begin{figure}[thbp]/g'
 # SEDOPTION+= -e 's/\end{figure}/\end{figure*}/g'
 # |sed '/begin{figure}/{N;N;N;N;s/\n//g;}'
 
+PDFS := $(shell find img -name *.jpg -or -name *.png|sed -e 's/jpg/pdf/g' -e 's/png/pdf/g')
+
 all:latexmk
 
-image:img/*
-	find img -name *.jpg -or -name *.png | xargs -IXXX sh -c 'F=XXX; convert $$F $${F%.*}.pdf'
+%.pdf :%.jpg
+	convert $< $@
+%.pdf :%.png
+	convert $< $@
+image: $(PDFS)
+	echo $<
+
 
 md:md/document.md templates/*
 	pandoc md/document.md -f $(PANDOCOPTION) --to=latex --biblatex --data-dir=$(DATADIR) --template=$(LATEX_TEMPLATE) | sed '/begin{figure}/{N;N;N;N;N;N;s/\n//g;}' | sed $(SEDOPTION) > tex/$(LATEX_FILE).tex
@@ -45,7 +52,7 @@ appendix:md/appendix*
 docx:md/document.md
 	pandoc md/document.md -f $(PANDOCOPTION) --data-dir=$(DATADIR) --to=docx > docx/document.docx
 
-latexmk:md tex/myreference.bib appendix
+latexmk:md tex/myreference.bib appendix image
 	latexmk -f  -cd tex/$(LATEX_FILE).tex
 
 debug:md
