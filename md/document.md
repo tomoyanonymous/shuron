@@ -30,6 +30,8 @@ This part is an abstract in english
 
 # 序論
 
+**聴覚の時代を経て、聴覚に頼らない音の生成方法の記述を模索する**
+
 作品の意図の概要↓
 
 筆者は過去に様々な形で行われてきた、音楽や音を用いた芸術の表現を拡張するような試みに影響を受けてきた。正確には、作品そのものはもちろんなのだが、同じくらい**それらの作品の多くを直接体験できていないこと**に影響を受けている。数々の野心的なプロジェクトの記録自体は残っているし、芸術史という形でまとめられてもいるが、筆者が体験した多くはテキスト上の説明や、写真、記録録音という記録であって、作品そのものではない。したがって、なぜその作品が芸術史上重要なのかの実感をはっきりと持つことは難しい。
@@ -39,6 +41,8 @@ This part is an abstract in english
 
 
 本論文中で言及する電子楽器Exidiophoneを制作してから、複数回ライブパフォーマンスをするようになって、「ノイズとかをやっている人」と思われることが多くなった。しかし自分の中に電子音楽や実験音楽のバックグラウンドは殆ど無い。
+
+↑新しい楽器を、出音の都合以外から作り出すことで楽器は出来てしまうが、聞いてる側からするとノイズになる
 
 ケージから始まった、聴取に基づく音楽の議論に限界が来ているのではないか
 
@@ -66,7 +70,7 @@ This part is an abstract in english
 
 
 
-> このように考えますと、ジョン・ケージの有名な「4分33秒」という作品は、実はあまり称賛ばかりしていられないものになってしまいます。ケージは、すべての音は喜ばしきもの、と禅に影響された独特の音楽思想を展開しました。
+> このように考えますと、ジョン・ケージの有名な「4分33秒」という作品は、実はあまり称賛ばかりしていられないものになってしまいます。ケージは、すべての音は喜ばしきもの、と禅に影響された独特の音楽思想を展開しました。~もしすべての音がよきものになってしまうなら、著者が定義するようなノイズの居場所は無くなってしまうことになります。（ヘガティ訳者あとがき）
 
 
 
@@ -93,6 +97,10 @@ This part is an abstract in english
 「残ったもの」が近代における音楽としての成立を支えている(大崎「音楽史の形成とメディア」)
 
 楽譜文化
+
+> これは、先駆者（例えばヴァレーズ）が、後にのみ先駆者として認められること、つまり先駆者であったことが、**常に後から認められてきた**ことを思い起こそう。（23p）
+>
+> 同時に、ケージは望まれない音を締め出しもした。すべての音がよきものなら、どうしてノイズが存在できよう。そして、ここでのノイズは多様性や社会的聴覚的不協和音のことである
 
 ### 録楽文化
 
@@ -142,7 +150,7 @@ Puckette ICMCキーノート[@puckette2015sampling]
 
 # 関連事例
 
-##
+
 
 ## アーカイブ・再演する取り組み
 
@@ -190,7 +198,7 @@ Edison Effect
 
 
 
-## 作品概要
+## 背景
 
 ### 物理モデリング合成
 
@@ -200,9 +208,11 @@ Edison Effect
 
 {+@fig:physicalmodel-history}はBilbaoによる物理モデリング合成の手法の歴史を概観したものである[@Bilbao2009]。
 
-Bilbaoによれば、1960年代にRissetが様々な音高の純音の組み合わせで音を表現する加算合成を考案したのに始まり、現代のシンセサイザーの基礎となる減算合成、
+Bilbaoによれば、
 
-またSmithは録音された実際の楽器の音を鍵盤や専用のインターフェースを介して発音するサンプリング合成、いわゆるサンプラーのようなものも現実の楽器を模倣する一つの手法として数えている[@smith2010pasp]。
+1965年頃からRissetとMathewsは音響心理研究と主観評価法の発展を背景にしてコンピューターを用いた楽器音の分析と再合成の研究を行っている[@Risset1965; @Mathews1969]。こうした研究を元に加算合成（解説？）やウェーブテーブル合成、周波数変調合成といった手法で実際の楽器音や人間の声をコンピューター上で再現する試みが数多く行われてきた(文献)。
+
+Smithはこうした手法と物理モデリング合成と違いは、前者が**人間の聴覚に基づいて音をモデル化**しているのに対して、物理モデリング合成は**音源の発音の仕組みをモデル化**していることだと述べている[@OSmithIII2004;  @smith2010pasp]。
 
 もっとも基礎的な手法は、力学モデルを微分方程式として作り、その解を求め、離散化して計算機に実装するものである。例えばバネの片方の端におもりが付いていて、片方が壁に固定されているときバネを引っ張ると質点は一定の間隔で揺れる。これを
 $$
@@ -246,7 +256,15 @@ FDAは何にでも使えるけど計算コストが大きい
 
 楽器の物理モデリング合成のいちばんの目的はコンピューター上で本物の楽器にできるだけ近い音を出すことだが、その応用として現実ではありえない楽器音を作るという、一見すると真逆の取り組みが数多く行われている。
 
-例えば商用のシンセサイザーとしてはじめて物理モデリング音源を採用したYAMAHA VL1のユーザーマニュアルにはこの様な文言が見られる[@vl1perfectguide1993]。
+> *The musical value of the computer does not lie, of course in its ability to duplicate exactly what a real instrument can do, but rather in yielding an extended repertory of sounds, including and going beyond the classes of sounds of actual instruments.*
+>
+> *コンピューターの音楽的価値は本物の楽器にできる事を全て複製できるという能力はもちろんのこと、実際の楽器音を包括し超えて拡張された音の種類を生み出せることにあります[@Mathews1969]。*
+
+より近年の理論的な議論の中においても、例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらは、2018年現在もまだ製品などに応用されていないその手法について解説した本を以下のように締めくくる[@Trautman2003]。
+
+> *In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.*
+
+具体的な例を時系列で紹介していく。商用のシンセサイザーとしてはじめて物理モデリング音源を採用したYAMAHA VL1のユーザーマニュアルにはこの様な文言が見られる[@vl1perfectguide1993]。
 
 > *VA音源は、物理モデルによる音の合成という今までになかった音源方式をとっています。これはいわば、音源内に仮想的に作りあげたアコースティック楽器を使って音づくりをしているわけです。ですからその音は、息使いや音の存在感、そして音と音のつながりの自然さなどの面で、AWM2音源よりもリアルです。(10p)*
 
@@ -266,11 +284,13 @@ FDAは何にでも使えるけど計算コストが大きい
 
 と、リアルさとありえない楽器という一見対立する2つをどちらも魅力として語っていることから、開発側だけでなくユーザー側もこうした宣伝文句をある程度受け入れていた事が伺える[@cmmagazine1996]。
 
-より近年の議論では、例えば物理モデリングの中のいち手法Functional Transformation法を提案したRabensteinらは、2018年現在もまだ製品などに応用されていないその手法について解説した本を以下のように締めくくる[@Trautman2003]。
+より意図的に物理モデリングを実際の楽器の再現以外に用いたものの代表例としてフランスの音響研究所ACROE-ICAでCadozらによって開発されてきたCORDIS-ANIMAシステムが挙げられる。これを応用したものとして音楽の作曲の構造自体をバネ、おもり、ダンパのような物理的な相互作用のモデルとして記述する「pico..TERA」などの発展例がある[@Cadoz2002]。また近年の類似したシステムとして、同様にバネ、おもり、ダンパをグラフィカルに組み合わせて仮想的な楽器を作るソフトウェアRurataeがある[@allen2014ruratae]。
 
-> *In acoustics, the application of the FTM has broadened the field of sound synthesis methods into the direction of a direct physical approach to simulate the vibrational behaviour not only of existing instruments but also of structures that are not realizable in the real world.*
+現在販売されている物理モデリング合成を用いたシンセサイザーの中でこうした非リアルな応用をしている製品として、Applied Acoustic Systems社のソフトウェア音源Tassman、String Studio VS-2、Chromaphone、また同社とIntellijel Design社が共同で開発したユーロラック規格のハードウェア音源モジュールPlonkなどがある[@aas2017web; @IntellijelDesignsInc2017]。（より詳細な説明？）
 
-この様なリアルを目指しつつ非リアルも求める傾向を説明する言葉として、VL1の登場する1年前の1992年にBorinらが用いた疑似物理モデリングという考え方がある。物理的リアルさは発想の源でしか無く[@Borin1992]。
+また、コンピューター上でこうした手法を応用するのではなく、現実の楽器開発に逆輸入した例としてYAMAHAの管楽器Venovaがある。元々サクソフォンなどの円錐管の周波数特性を再現するために、仮想的に2つに枝分かれした円筒として扱うことで効率的に計算ができる分岐管構造という技術があり[@masuda2011pipe]、Venovaはこれをサクソフォンのような音色を保ちつつ楽器を小型化するために実際に分岐した円筒管の構造を持っている。
+
+この様なリアルを目指しつつ非リアルも求める傾向を説明する言葉として、VL1の登場する1年前の1992年にBorinらが議論していた疑似物理モデリングという考え方がある。物理的リアルさは発想の源でしか無く[@Borin1992]。
 
 > *From our point of view, synthesis by physical models--being a sort of a musical reality "generator" on its own--makes it possible to take inspiration from the real world in order to derive our iterpretation of it without forcing us to limit experimentation to the usual physical equations.*
 
@@ -279,6 +299,14 @@ FDAは何にでも使えるけど計算コストが大きい
 Kojsらはこうした物理モデリング合成の展開をコンピューターを用いた音楽作品に応用されてきた例を**拡張(Extended)・融合(Hybrid)・抽象(Abstract)**という3種類に分類し整理している({+@fig:kojs-table})[@Kojs2007]。
 
 ![Kojsらによる物理モデリング合成の応用を分類する表。](../img/kojs-table.png){#fig:kojs-table width=65%}
+
+実際に分類してみる
+
+### モデリングに関する科学哲学に置ける議論
+
+こうした物理モデリングの非リアルな応用の一つの補助線となりうる議論として、そもそもモデル、モデリング、モデル化という言葉が何を指しているのかが統一されていないという形而上学的問題が科学哲学の文脈で議論されている。
+
+
 
 ### Cookによるメタ管楽器モデルWhirlwind
 
@@ -292,7 +320,7 @@ Whirlwindはウェーブガイド合成でモデリングされたトランペ�
 
 (Resonator(Bore)に関しては、元の3つのモデルには存在しないにも関わらずWhirlwindでは追加されている双二次フィルタがある。筆者はこれは管楽器のベル部分の持つ周波数特性を表現するものとして配置していると推測し(Bore)と名前を付けたが、実際の詳しい用途は不明である。)
 
-### Aphysical Unmodeling Instrument 作品概要
+## 作品概要
 
 Aphysical Unmodeling InstrumentはWhirlwindをコンピューターではなく物理的なオブジェクトの組み合わせで実装するサウンドインスタレーションである。計算モデルをコンピュータの世界の外側で実装することを目的として、デジタル信号処理
 
@@ -300,27 +328,7 @@ Aphysical Unmodeling InstrumentはWhirlwindをコンピューターではなく�
 
 例えば{+@fig:whirlwind}でDelayと書かれた遅延処理はスピーカーとマイクの組み合わせで、音速と距離に応じた音波の遅れで置き換えている。
 
-## 関連事例
 
-### 三輪眞弘 逆シミュレーション音楽
-
-コンピューターのアルゴリズムをコンピューター以外で実行する、という視点での類似した作品として、三輪眞弘の逆シミュレーション音楽が挙げられる。逆シミュレーション音楽は三輪によれば
-
-> 逆シミュレーション音楽は地球上の古代人や未開民族が行っていたかもしれない、 あるいは行うことが可能であったような音楽（これを「ありえたかもしれない音楽」と呼ぶ）を空想し、 主にコンピュータ・シミュレーションによって検証しながら新しい音楽を生み出す試みである。 その際、演奏会や作曲家、演奏家、聴衆の区別など、音楽に関係する既存の社会的制度は前提としない。
-
-とあり、音楽を作り出すための計算のアルゴリズムを決める「規則による生成」、演奏の際に現実どう行動するか、どのような道具を用いるかを検討する「解釈」、作品のタイトルや作品に使われる道具に名前を付けその由来を考える(現実には存在しない物語でも良い)「命名」という3種の行動（三輪はこれを「相」と名付ける）を元に作品を作る[@Miwa2003]。実際の逆シミュレーション音楽作品には架空の物語が付随しており、三輪は全ての物語の最後を「という夢をみた。」という一文で締めている。
-
-
-
-### CORDIS-ANIMA, GENESIS
-
-### Ruratae
-
-### YAMAHA Venova
-
-### aFrame
-
-なんかHCI系とか、フィジカルタンジブルコンピューティングみたいな話もあったほうがいいのかも
 
 ## 展示内容とその変遷
 
@@ -505,6 +513,10 @@ Whirlwindは3つの現実の楽器を仮想的に合体させているので、�
 
 一方で、物理的なオブジェクトを空間に配置するという行為を行う以上この作品をどこかに出品する以上は展示、インスタレーション展示という枠組みの中に留まらざるを得ない。音楽的なモチベーションを見る側に伝えることが難しい、形式に囚われる→Exidiophoneへのモチベーション
 
+## まとめ
+
+
+
 # Exidiophone
 
 Exidiophoneは、オーディオフィードバック(ハウリング)を音の発音原理に用いた電子音響楽器である。
@@ -561,8 +573,20 @@ Crackleboxは1975年にMichel Waisviszを中心としてオランダの電子楽
 
 指で触る以外にも、電極をスプーンやフォークに繋いで口に運ぶことで音を発生させたり、複数人で異なる電極に触れて、人同士の間に床や布、自転車、植物などを挟んで音を鳴らす例が挙げられている[@Waisvisz2004]。
 
-
 ## 作品概要
+
+### スピーカーとマイクロフォンの楽器としての利用
+
+van Eckはマイクロフォンとスピーカーの利用法には4つのアプローチがあると分析する。
+
+1. Reproducing
+2. Supporting
+3. Generating
+4. Interacting
+
+> The idea of creating music which no longer has any connection to existing musical instruments nor needs musicialns to perform on them forms the third approach, which I term *generating*. The sound is produced by the loudspeakers and could not exist without them. A musical instruments is not present at all in this music. Whereas the sound of electronic instruments, such as the theremin, also need a loudspeaker to become audible, the difference lies not in the *method* of sound production, which may be the same (both are produced electronically) but rather in the *acts of sound creation* which diverge.
+
+### 動作の仕組み
 
 ![Exidiophoneの音のなる構造を説明する図。](../img/exidiophone-system-ja.jpg){#fig:exidiophone-sys width=100%}
 
@@ -785,6 +809,26 @@ Exidiophoneを作りはじめたときは、オーディオフィードバック
 Daxophone
 
 プラズマディストーション
+
+EckのInteractingを考える。非楽器のものでもパフォーマーとの間のインタラクションがあることで楽器として認められる→世界の中に新しい楽音として受け入れられる ヘガティのノイズっぽい話？
+
+それならばノイズと言われるのもしょうがない気はする
+
+
+
+楽器が新しい音楽を生む、一方で演奏者の探求、誤用が楽器の用法を拡張するというフィードバックがある
+
+なぜ新しい音楽を？という問題点が常にある
+
+渡邊恵太　融けるデザイン
+
+ギブソンのアフォーダンス
+
+> 環境は「情報」が構造化されているものであると捉え、そういった環境の中で人間が知覚・行為することで、意味や価値が立ち上がってくると考える。環境と人間はひとつのシステムとして成立し、知覚と行為によって環境と人間が接続されているように捉えるのだ。したがって、環境と知覚、身体、行為は切り離せず、よってギブソン的には「知覚対象と思っている環境」を客観的に見るということはできず、すなわち主観と客観の切り分けも難しいという主張になる。
+
+スピーカーとマイクロフォンの透明性　
+
+投げたボールはどこまで身体か？
 
 ### 単機能の集合からの創発(特に5台での演奏)
 
