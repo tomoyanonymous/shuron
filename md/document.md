@@ -8,6 +8,8 @@ en_author: MATSUURA Tomoya
 advisor: 城 一裕 准教授
 title: メディア考古学的視点での
 subtitle: 音の生成を再考する3つの作品制作
+en_title: 3 creations that rethink a generation of sound
+en_subtitle: from media archaeological viewpoints
 fignos-caption-name: 図
 fignos-plus-name: 図
 abstract: 本研究は
