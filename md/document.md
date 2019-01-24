@@ -1,10 +1,13 @@
 ---
-shozoku: 芸術工学専攻コンテンツ・クリエーティブデザインコース
-nyuugaku: 2017年度入学
+shozoku1: 九州大学大学院 芸術工学府
+shozoku2: 芸術工学専攻コンテンツ・クリエーティブデザインコース
+nyuugaku: 修士課程 平成29年4月入学
 gakuseki: 2DS17026K
 author: 松浦 知也
-title: 音の記述と生成を再考するための装置と環境の制作
-subtitle:
+en_author: MATSUURA Tomoya
+advisor: 城 一裕 准教授
+title: メディア考古学的視点からの聴覚に基づかない
+subtitle: 音生成を再考する作品制作
 fignos-caption-name: 図
 fignos-plus-name: 図
 abstract: 本研究は
