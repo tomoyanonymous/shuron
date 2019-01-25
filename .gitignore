@@ -6,3 +6,4 @@ tex/document*
 *.bbl
 *.blg
 img/**/*.pdf
+docx/
