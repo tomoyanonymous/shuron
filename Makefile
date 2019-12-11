@@ -59,4 +59,5 @@ debug:md
 		latexmk -f --shell-escape -cd tex/$(LATEX_FILE).tex
 
 clean:
+	rm -rf img/*.pdf
 	latexmk -cd -C tex/$(LATEX_FILE).tex
