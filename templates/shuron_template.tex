@@ -15,7 +15,14 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,bibstyle=apa]{biblatex}
 \DeclareRobustCommand\ddash{\hbox to 2zw{---\hss ---}}% \let\doubledash\ddash
+    %% pandoc-fignos: required package
+    \usepackage{cleveref}
 
+    %% pandoc-fignos: change cref names
+    \crefname{figure}{図}{figs.}
+
+    % pandoc-fignos: change the caption name
+    \renewcommand{\figurename}{図}
 
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
