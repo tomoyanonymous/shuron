@@ -20,7 +20,7 @@ SEDOPTION+= -e 's!.jpg!.pdf!g'
 # SEDOPTION+= -e 's!.jpeg!.jpeg.pdf!g'
 SEDOPTION+= -e 's!.JPG!.pdf!g'
 # SEDOPTION+= -e 's!.JPEG!.JPEG.pdf!g'
-
+SEDOPTION+= -e 's!%\\centering!\\centering!g'
 # SEDOPTION+= -e 's/\\begin{longtable}/\\begin{center}\\begin{supertabular}/g'
 # SEDOPTION+= -e 's/\\endhead/ /g'
 # SEDOPTION+= -e 's/\\end{longtable}/\\end{supertabular}\\end{center}/g'
